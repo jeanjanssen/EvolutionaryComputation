@@ -1,6 +1,7 @@
 import numpy as np
 import math
 
+
 class Knapsack:
     index = np.arange(1, 10)
     weight = np.randint(1, 10)
@@ -17,5 +18,6 @@ class Knapsack:
 
     num_generations = 50;
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
+    print("Hello World!")
