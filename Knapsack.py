@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 #TODO popsize 25-200, with increases of 25
 #TODO probability of crossover and mutation, 0-1, with increases of 0.2
 #TODO elitism proportion, 0-10, increases of 2
-#TODO number of generations,10k-50k with increases of 10k
+#TODO number of generations,10k-50k with increases of 10k test
 
 
 
