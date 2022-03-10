@@ -7,22 +7,28 @@ from matplotlib import pyplot as plt
 
 
 #EXPERIMENTS
-#TODO popsize 25-200, with increases of 25
+#TODO Randomness proportion selection 0-30
+#TODO popsize 50-200, with increases of 50
 #TODO probability of crossover and mutation, 0-1, with increases of 0.2
-#TODO elitism proportion, 0-10, increases of 2
 #TODO number of generations,10k-50k with increases of 10k test
 
 
+#20,10
+r = 20
+k = 20
 
-# index = np.arange(1, 10)
-# weight = np.random.randint(1, 10)
-# set on half average value of ind_size
-max_weight = 75
+# set on half average value of ind_size, weights are between 1 and 10 so if you have 50 ind_size this should be 50 * 5 / 2
+#125
+max_weight = 125
 # value = index
-ind_size=30
-pop_size=30
-num_generations = 10000
+#both 50
+ind_size=50
+pop_size=50
 
+#10k
+num_generations = 2000
+
+#both 0.4
 p_cross = 0.4
 p_mut = 0.4
 def matrixgen(size):
@@ -212,7 +218,7 @@ if __name__ == '__main__':
     popind = (pop_size, ind_size)
     test = Population(popind)
     a = matrixgen(ind_size)
-
+    print(a)
     test.fitness_calc(a)
     print(test.pop)
     print(test.fitness)
@@ -220,18 +226,18 @@ if __name__ == '__main__':
     plotlist = []
     plotlist1 = []
     while  i < num_generations:
-        test.elitist_selection(r=10)
+        # test.elitist_selection(r=r)
 
-        # test.tournament_selection(k=5, r=5)
-        # test.roulette_selection(r=10)
+        test.tournament_selection(k=k, r=r)
+        # test.roulette_selection(r=r)
         test.fitness_calc(a)
 
         plotlist.append(max(test.fitness))
         #Do avg per hundred
         if i%(0.02*num_generations) == 0:
-            plotlist1.append(sum(test.fitness)/len(test.fitness))
-            # test.calculate_diversity()
-            # plotlist1.append(test.diversity_avg)
+            # plotlist1.append(sum(test.fitness)/len(test.fitness))
+            test.calculate_diversity()
+            plotlist1.append(test.diversity_avg)
             temp= plotlist1[i]
         else:
 
