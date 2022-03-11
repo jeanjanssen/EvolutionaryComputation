@@ -3,9 +3,6 @@ import random
 import math
 from matplotlib import pyplot as plt
 
-#TODO write tournament selection, and roulette selection
-
-
 #EXPERIMENTS
 #TODO Randomness proportion selection 0-30
 #TODO popsize 50-200, with increases of 50
@@ -15,7 +12,7 @@ from matplotlib import pyplot as plt
 
 #20,10
 r = 20
-k = 20
+k = 10
 
 # set on half average value of ind_size, weights are between 1 and 10 so if you have 50 ind_size this should be 50 * 5 / 2
 #125
@@ -26,7 +23,7 @@ ind_size=50
 pop_size=50
 
 #10k
-num_generations = 2000
+num_generations = 10000
 
 #both 0.4
 p_cross = 0.4
@@ -110,8 +107,8 @@ class Population:
                 # take best out of k random individuals
                 ind2 = self.pop[maxindices[min(indexlist)]]
 
-                ind = self.single_point_crossover(ind, ind2)
-                # ind = self.two_point_crossover(ind, self.pop[maxindices[a]])
+                # ind = self.single_point_crossover(ind, ind2)
+                ind = self.two_point_crossover(ind, ind2)
 
             # mutation
             if random.uniform(0, 1) < p_mut:
